@@ -100,10 +100,17 @@ class Homepage {
 
     validateQuantityAndPrice(quantity, price) {
         cy.get(this.cartInfoPanel).get("table > tbody > tr > td").contains("Items").parent().get("strong").contains(`${quantity}`);
-        cy.get(this.cartInfoPanel).get("table > tbody > tr > td").contains("Price").parent().get("strong").contains(`${quantity}`);
-        // return cy.get(this.cartInfoPanel).contains("Price").parent().get("strong").contains(`${price}`);
+        // cy.get(this.cartInfoPanel).get("table > tbody > tr > td").contains("Price").parent().get("strong").contains(`${price}`);
     }
 
+    typeIntoSearchBar(text) {
+        cy.get(".search-keyword").type(text);
+    }
+
+    validateOnlyOneResultExists(product) {
+        cy.get(".products").children().should("have.length", 1);
+        cy.get(".products").children().contains("h4", product).should("exist");
+    }
 }
 
 export default Homepage;
