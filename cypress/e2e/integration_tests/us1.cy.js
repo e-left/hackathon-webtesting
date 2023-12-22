@@ -56,9 +56,12 @@ describe('US1', () => {
     homepage.assertCartIsHidden();
   });
 
-  // it("Add single product to cart multiple times", () => {
+  it("Add single product to cart multiple times", () => {
+    const homepage = new Homepage();
+    
+    homepage.addSingleProductToCart("Brocolli", 3);
 
-  // });
+  });
 
   // it("Add multiple distinct items to cart", () => {
 

@@ -91,6 +91,13 @@ class Homepage {
         return cy.get(this.cartPanel).get(this.actionBlockClass).get(this.buttonElement).contains(this.proceedToCheckoutContent).click();
     }
 
+    addSingleProductToCart(product, times) {
+        for (let i = 0; i < times; i++) {
+            cy.get(".product").contains("h4", product).parent().get(".stepper-input").contains(".increment", "+").click();
+        }
+        cy.get(".product").contains("h4", product).parent().get(".product-action").contains("button", "ADD TO CART").click();
+    }
+
 }
 
 export default Homepage;
