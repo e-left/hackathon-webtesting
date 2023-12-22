@@ -18,7 +18,7 @@ describe('Use Promo Codes/Coupons for an Order', () => {
     cy.url().should('contain', 'cart');
   });
 
-  it('test1', () => {
+  it('Column numbers should be ok', () => {
     const page = new CartPage();
     page.checkItemQuantity('Brocolli - 1 Kg', '2');
     page.checkItemPrice('Brocolli - 1 Kg', '120');
@@ -37,6 +37,10 @@ describe('Use Promo Codes/Coupons for an Order', () => {
   it('3', () => {
     const page = new CartPage();
     page.clickPlaceOrder();
-    // 
+    cy.get('select').select('Afghanistan').should('have.value', 'Afghanistan');
+    cy.get('input[type="checkbox"]').click();
+    cy.contains('Proceed').click();
+    cy.contains('Thank you');
+    cy.url().should('eq', 'https://rahulshettyacademy.com/seleniumPractise/#/');
   })
 });
