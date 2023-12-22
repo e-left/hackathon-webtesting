@@ -24,11 +24,7 @@ class CartPage {
   }
 
   checkNumberOfItems(text) {
-    return cy
-      .contains('No. of Items : ')
-      .invoke('text')
-      .then(text => text.trim())
-      .should('eq', text);
+    return cy.contains('No. of Items').parent().should('contain', `No. of Items     : ${text}`);
   }
 
   checkTotalAmount(text) {
