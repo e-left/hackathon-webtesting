@@ -100,7 +100,7 @@ class Homepage {
 
     validateQuantityAndPrice(quantity, price) {
         cy.get(this.cartInfoPanel).find("table > tbody > tr > td").contains("Items").parent().find("strong").contains(`${quantity}`);
-        // cy.get(this.cartInfoPanel).get("table > tbody > tr > td").contains("Price").parent().get("strong").contains(`${price}`);
+        cy.get(this.cartInfoPanel).find("table > tbody > tr > td").contains("Price").parent().get("strong").contains(`${price}`);
     }
 
     typeIntoSearchBar(text) {
