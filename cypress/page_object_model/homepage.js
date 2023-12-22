@@ -50,6 +50,10 @@ class Homepage {
         return "disabled";
     }
 
+    get proceedToCheckoutContent() {
+        return "PROCEED TO CHECKOUT";
+    }
+
     visitRoot() {
         return cy.visit("/");
     }
@@ -81,6 +85,10 @@ class Homepage {
 
     assertCartIsHidden() {
         return cy.get(this.cartPanel).should("not.have.class", this.activeClass);
+    }
+
+    clickProceedToCheckoutButton() {
+        return cy.get(this.cartPanel).get(this.actionBlockClass).get(this.buttonElement).contains(this.proceedToCheckoutContent).click();
     }
 
 }

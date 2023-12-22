@@ -36,9 +36,25 @@ describe('US1', () => {
     homepage.assertCartIsHidden();
   });
 
-  // it("Checkout an empty shopping cart", () => {
+  it("Checkout an empty shopping cart", () => {
+    const homepage = new Homepage();
 
-  // });
+    homepage.assertZeroItemsPrice();
+
+    homepage.clickOnCartBagButton();
+
+    homepage.assertEmptyCartMessageAppears();
+
+    homepage.assertProceedToCheckoutButtonIsDisabled();
+
+    homepage.clickProceedToCheckoutButton();
+
+    homepage.assertStayOnSamePage();
+
+    homepage.clickOnCartBagButton();
+
+    homepage.assertCartIsHidden();
+  });
 
   // it("Add single product to cart multiple times", () => {
 
