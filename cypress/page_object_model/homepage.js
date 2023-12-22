@@ -59,7 +59,7 @@ class Homepage {
     }
 
     assertZeroItemsPrice() {
-        return cy.get(this.cartInfoPanel).children().get(this.strongElement).contains(this.emptyItemsData);
+        return cy.get(this.cartInfoPanel).children().find(this.strongElement).contains(this.emptyItemsData);
     }
 
     clickOnCartBagButton() {
@@ -76,11 +76,11 @@ class Homepage {
 
     assertEmptyCartMessageAppears() {
         cy.get(this.emptyCartPanel).should('exist');
-        return cy.get(this.emptyCartPanel).get(this.h2Element).contains(this.emptyCartData);
+        return cy.get(this.emptyCartPanel).find(this.h2Element).contains(this.emptyCartData);
     }
 
     assertProceedToCheckoutButtonIsDisabled() {
-        return cy.get(this.cartPanel).get(this.actionBlockClass).get(this.buttonElement).should("have.class", this.disabledClass);
+        return cy.get(this.cartPanel).find(this.actionBlockClass).find(this.buttonElement).should("have.class", this.disabledClass);
     }
 
     assertCartIsHidden() {
@@ -88,18 +88,18 @@ class Homepage {
     }
 
     clickProceedToCheckoutButton() {
-        return cy.get(this.cartPanel).get(this.actionBlockClass).get(this.buttonElement).contains(this.proceedToCheckoutContent).click();
+        return cy.get(this.cartPanel).find(this.actionBlockClass).find(this.buttonElement).contains(this.proceedToCheckoutContent).click();
     }
 
     addSingleProductToCart(product, times) {
         for (let i = 0; i < times; i++) {
-            cy.get(".product").contains("h4", product).parent().get(".stepper-input").contains(".increment", "+").click();
+            cy.get(".product").contains("h4", product).parent().find(".stepper-input").contains(".increment", "+").click();
         }
-        return cy.get(".product").contains("h4", product).parent().get(".product-action").contains("button", "ADD TO CART").click();
+        return cy.get(".product").contains("h4", product).parent().find(".product-action").contains("button", "ADD TO CART").click();
     }
 
     validateQuantityAndPrice(quantity, price) {
-        cy.get(this.cartInfoPanel).get("table > tbody > tr > td").contains("Items").parent().get("strong").contains(`${quantity}`);
+        cy.get(this.cartInfoPanel).find("table > tbody > tr > td").contains("Items").parent().find("strong").contains(`${quantity}`);
         // cy.get(this.cartInfoPanel).get("table > tbody > tr > td").contains("Price").parent().get("strong").contains(`${price}`);
     }
 
