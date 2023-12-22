@@ -1,4 +1,7 @@
 class Homepage {
+    constructor() {
+
+    }
 
 }
 
