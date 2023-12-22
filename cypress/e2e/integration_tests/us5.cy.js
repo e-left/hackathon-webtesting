@@ -13,24 +13,60 @@ describe('Use Promo Codes/Coupons for an Order', () => {
     const page = new CartPage();
 
     page.getPromoCodeInput().type('rahulshettyacademy');
-
     page.getApplyButton().click();
 
+    page.showsCodeAppliedMessage();
+    page.checkDiscount('10%');
     page.checkNumberOfItems('2');
     page.checkTotalAmount('180');
-    page.checkDiscount('10%');
     page.checkTotalAfterDiscount('162');
   });
 
   it('Add valid promo code once', () => {
     // User should be able to add a valid promo code and get the discount once
     const page = new CartPage();
+
+    page.getPromoCodeInput().type('rahulshettyacademy');
+    page.getApplyButton().click();
+
+    page.showsCodeAppliedMessage();
+    page.checkDiscount('10%');
+    page.checkNumberOfItems('2');
+    page.checkTotalAmount('180');
+    page.checkTotalAfterDiscount('162');
+
+    page.getPromoCodeInput().type('rahulshettyacademy');
+    page.getApplyButton().click();
+
+    page.showsCodeAppliedMessage();
+    page.checkDiscount('10%');
+    page.checkNumberOfItems('2');
+    page.checkTotalAmount('180');
+    page.checkTotalAfterDiscount('162');
   });
 
   it('Add valid promo code and not lose it after with empty code', () => {
     // User should be able to add a discount code and not lose his discount if he tries to add an empty code after
 
     const page = new CartPage();
+
+    page.getPromoCodeInput().type('rahulshettyacademy');
+    page.getApplyButton().click();
+
+    page.showsCodeAppliedMessage();
+    page.checkDiscount('10%');
+    page.checkNumberOfItems('2');
+    page.checkTotalAmount('180');
+    page.checkTotalAfterDiscount('162');
+
+    page.getPromoCodeInput().clear();
+    page.getApplyButton().click();
+
+    page.showsEmptyCodeMessage();
+    page.checkDiscount('10%');
+    page.checkNumberOfItems('2');
+    page.checkTotalAmount('180');
+    page.checkTotalAfterDiscount('162');
   });
 
   it('Add valid promo code and not lose it after with invalid code', () => {
