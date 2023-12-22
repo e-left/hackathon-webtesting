@@ -95,7 +95,13 @@ class Homepage {
         for (let i = 0; i < times; i++) {
             cy.get(".product").contains("h4", product).parent().get(".stepper-input").contains(".increment", "+").click();
         }
-        cy.get(".product").contains("h4", product).parent().get(".product-action").contains("button", "ADD TO CART").click();
+        return cy.get(".product").contains("h4", product).parent().get(".product-action").contains("button", "ADD TO CART").click();
+    }
+
+    validateQuantityAndPrice(quantity, price) {
+        cy.get(this.cartInfoPanel).get("table > tbody > tr > td").contains("Items").parent().get("strong").contains(`${quantity}`);
+        cy.get(this.cartInfoPanel).get("table > tbody > tr > td").contains("Price").parent().get("strong").contains(`${quantity}`);
+        // return cy.get(this.cartInfoPanel).contains("Price").parent().get("strong").contains(`${price}`);
     }
 
 }

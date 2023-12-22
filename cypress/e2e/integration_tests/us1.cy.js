@@ -61,9 +61,7 @@ describe('US1', () => {
     
     homepage.addSingleProductToCart("Brocolli", 3);
 
+    homepage.validateQuantityAndPrice(1, 360);
   });
 
-  // it("Add multiple distinct items to cart", () => {
-
-  // });
 });
