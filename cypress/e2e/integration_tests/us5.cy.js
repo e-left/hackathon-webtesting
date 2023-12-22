@@ -8,7 +8,7 @@ describe('Use Promo Codes/Coupons for an Order', () => {
     // visit the homepage
     homepage.visitRoot();
 
-    // select brocolli and cauliflower
+    // add 1 brocolli and 1 cauliflower
     homepage.addSingleProductToCart('Brocolli', 0);
     homepage.addSingleProductToCart('Cauliflower', 0);
 

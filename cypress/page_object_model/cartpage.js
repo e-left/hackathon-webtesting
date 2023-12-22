@@ -53,19 +53,19 @@ class CartPage {
 
   getItemRow(productText) {
     // this function returns a table row of a specific item by text
-    return cy.contains(productText).parent('tr');
+    return cy.get('table tr').contains(productText).parent('td').parent();
   }
 
   checkItemQuantity(productText, quantity) {
-    return this.getItemRow(productText).get('.quantity').should('contain', quantity);
+    return this.getItemRow(productText).find('.quantity').should('contain', quantity);
   }
 
   checkItemPrice(productText, price) {
-    return this.getItemRow(productText).get('td').eq(3).should('contain', price);
+    return this.getItemRow(productText).find('td').eq(3).should('contain', price);
   }
 
   checkItemTotal(productText, total) {
-    return this.getItemRow(productText).get('td').eq(4).should('contain', total);
+    return this.getItemRow(productText).find('td').eq(4).should('contain', total);
   }
 }
 
