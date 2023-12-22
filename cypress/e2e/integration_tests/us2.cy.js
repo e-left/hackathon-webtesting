@@ -1,7 +1,7 @@
 import CartPage from '../../page_object_model/cartpage';
 
 describe('Use Promo Codes/Coupons for an Order', () => {
-  before(() => {
+  beforeEach(() => {
     // visit the home page
     cy.visit('/');
 
